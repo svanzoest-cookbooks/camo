@@ -2,6 +2,7 @@ Description
 ===========
 
 Installs camo - a small http proxy to simplify routing images through an SSL host
+For more information on camo see https://github.com/atmos/camo/
 
 Requirements
 ============

@@ -1,0 +1,241 @@
+{
+  "name": ".",
+  "description": "Configures camo - a small http proxy to simplify routing images through an SSL host",
+  "long_description": "Description\n===========\n\nInstalls camo - a small http proxy to simplify routing images through an SSL host\nFor more information on camo see https://github.com/atmos/camo/\n\nRequirements\n============\n\n* nodejs cookbook\n\nAttributes\n==========\n\nThe following are the deployment specific attributes that are used to describe where to download camo from,\nwhere to install it and who to run it as. It assumes that all these users are already present and the permissions\nare setup appropriately.\n\n* node[:camo][:path] = \"/srv/camo\"\n* node[:camo][:deploy_user] = \"deploy\"\n* node[:camo][:deploy_group] = \"users\"\n* node[:camo][:deploy_migrate] = false\n* node[:camo][:deploy_action] = \"deploy\"\n* node[:camo][:repo] = \"git://github.com/atmos/camo.git\"\n* node[:camo][:branch] = \"master\"\n* node[:camo][:user] = \"www-data\"\n* node[:camo][:group] = \"users\"\n\n# config\n\n* node[:camo][:port] = 8081\n* node[:camo][:key] = '0x24FEEDFACEDEADBEEFCAFE'\n* node[:camo][:max_redirects] = 4\n* node[:camo][:host_exclusions] = \"*.example.org\"\n* node[:camo][:hostname] = \"unknown\"\n* node[:camo][:logging] = \"disabled\"\n\nUsage\n=====\n\nUsually you would run this behind a web server proxy, such as apache2, nginx, etc.\nIn that cookbook add this cookbook as a dependency and include the default recipe\n\ninclude_recipe \"camo::default\"\n",
+  "maintainer": "OneHealth Solutions, Inc.",
+  "maintainer_email": "cookbooks@onehealth.com",
+  "license": "Apache 2.0",
+  "platforms": {
+    "ubuntu": ">= 10.04"
+  },
+  "dependencies": {
+    "nodejs": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+    "camo/key": {
+      "display_name": "Camo Shared Key",
+      "description": "The application key",
+      "type": "string",
+      "required": "recommended",
+      "default": "FEEDFACEDEADBEEFCAFE",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/port": {
+      "display_name": "Camo Network Port",
+      "description": "The tcp port Camo should bind to",
+      "type": "string",
+      "required": "optional",
+      "default": "8081",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/max_redirects": {
+      "display_name": "Max Redirects",
+      "description": "Maximum number of HTTP Redirects to follow",
+      "type": "string",
+      "required": "optional",
+      "default": "4",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/host_exclusions": {
+      "display_name": "Host Exclusions",
+      "description": "Hostname Glob List of hosts to not proxy: e.g. *.example.org",
+      "type": "string",
+      "required": "optional",
+      "default": "",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/hostname": {
+      "display_name": "Hostname",
+      "description": "Used in the response headers to expose the camo instance hostname",
+      "type": "string",
+      "required": "optional",
+      "default": "unknown",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/logging": {
+      "display_name": "Logging Boolean",
+      "description": "Set this to anything other than 'disabled' to see debug logging to stdout",
+      "type": "string",
+      "required": "optional",
+      "default": "disabled",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/app_name": {
+      "display_name": "App Name",
+      "description": "The application name",
+      "type": "string",
+      "required": "optional",
+      "default": "camo",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/path": {
+      "display_name": "Deployment Root Path",
+      "description": "Deployment Root Location",
+      "type": "string",
+      "required": "optional",
+      "default": "/srv/camo",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/user": {
+      "display_name": "Runtime User",
+      "description": "The local unix user used to run Camo",
+      "type": "string",
+      "required": "optional",
+      "default": "www-data",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/group": {
+      "display_name": "Runtime Group",
+      "description": "The local unix user used to run Camo",
+      "type": "string",
+      "required": "optional",
+      "default": "users",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/deploy_user": {
+      "display_name": "Deployment User",
+      "description": "The local unix user used for deployment",
+      "type": "string",
+      "required": "optional",
+      "default": "deploy",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/deploy_group": {
+      "display_name": "Deployment Group",
+      "description": "The local unix group used for deployment",
+      "type": "string",
+      "required": "optional",
+      "default": "users",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/deploy_action": {
+      "display_name": "Deployment action type",
+      "description": "The chef deployment revision action",
+      "type": "string",
+      "required": "optional",
+      "default": "deploy",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/repo": {
+      "display_name": "Camo Source Repository",
+      "description": "Repository from where to download Camo",
+      "type": "string",
+      "required": "optional",
+      "default": "git://github.com/atmos/camo.git",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "camo/branch": {
+      "display_name": "Camo Source Branch",
+      "description": "Branch from where to download Camo",
+      "type": "string",
+      "required": "optional",
+      "default": "master",
+      "choice": [
+
+      ],
+      "calculated": false,
+      "recipes": [
+
+      ]
+    }
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.1.0"
+}

@@ -1,0 +1,44 @@
+ 
+# http://upstart.ubuntu.com/cookbook/
+#
+description "<%= @app_name %>"
+
+# used to be: start on startup
+# until we found some mounts weren't ready yet while booting:
+#start on started mountall
+start on (local-filesystems and net-device-up IFACE=eth0)
+stop on shutdown
+
+# Automatically Respawn:
+respawn
+respawn limit 99 5
+
+script
+   # exec > /tmp/upstart-<%= @app_name %>.log 2>&1
+   set -e
+   TMPFIFO=/tmp/<%= @app_name %>-fifo$$.log
+   mkfifo ${TMPFIFO}
+   ( logger -t <%= @app_name %> < ${TMPFIFO} & )
+   exec > ${TMPFIFO} 2>&1
+   rm -f ${TMPFIFO}
+   set -x
+   # See http://upstart.ubuntu.com/cookbook/#run-a-job-as-a-different-user
+   # can't use setuid until upstart 1.4
+   DAEMON="/usr/bin/node"
+   DAEMON_OPTS="server.js"
+   APP_DIR="<%= @app_path %>/current"
+   APP_USER="<%= @app_user %>"
+   export NODE_ENV="<%= @environment %>"
+   export PORT=<%= @port %>
+   export CAMO_HOST_EXCLUSIONS="<%= @host_exclusions %>"
+   export CAMO_KEY="<%= @key %>"
+   export CAMO_MAX_REDIRECTS="<%= @max_redirects %>"
+   export CAMO_HOSTNAME="<%= @hostname %>"
+   export CAMO_LOGGING_ENABLED="<%= @logging %>"
+   exec start-stop-daemon --start -c $APP_USER --name <%= @app_name %> --exec $DAEMON -d $APP_DIR -- $DAEMON_OPTS
+end script
+
+post-start script
+  # Optionally put a script here that will notifiy you node has (re)started
+  /usr/bin/logger -t <%= @app_name %> "restarted"
+end script

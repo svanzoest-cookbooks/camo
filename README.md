@@ -10,6 +10,7 @@ Requirements
 ============
 
 * nodejs cookbook
+* git cookbook
 
 Attributes
 ==========
@@ -19,7 +20,7 @@ where to install it and who to run it as. It assumes that all these users are al
 are setup appropriately.
 
 * node[:camo][:path] = "/srv/camo"
-* node[:camo][:deploy_user] = "deploy"
+* node[:camo][:deploy_user] = "root"
 * node[:camo][:deploy_group] = "users"
 * node[:camo][:deploy_migrate] = false
 * node[:camo][:deploy_action] = "deploy"

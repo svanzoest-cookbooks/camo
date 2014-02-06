@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'camo::default' do
   platforms = {
-    'ubuntu' => ['10.04', '12.04'],
+    'ubuntu' => ['10.04', '12.04']
   }
 
   # Test all generic stuff on all platforms
@@ -86,10 +86,10 @@ describe 'camo::default' do
           )
         end
 
-        #it 'deploys a revision of camo into /srv/camo' do
-        #  expect(chef_run).to deploy_revision_deploy('/srv/camo')
-        #  expect(chef_run).to_not deploy_revision_deploy('/srv/not_camo')
-        #end
+#       it 'deploys a revision of camo into /srv/camo' do
+#         expect(chef_run).to deploy_revision_deploy('/srv/camo')
+#         expect(chef_run).to_not deploy_revision_deploy('/srv/not_camo')
+#       end
 
         it 'starts the camo service' do
           expect(chef_run).to start_service('camo')

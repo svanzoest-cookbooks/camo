@@ -14,7 +14,7 @@ end
 group :development do
   gem 'foodcritic',       '~> 3.0'
   gem 'rubocop',          '~> 0.18.0'
-  gem 'chefspec',         '~> 3.1.4'
+  gem 'chefspec',         '~> 3.2.0'
   gem 'guard',            '~> 1.8'
   gem 'guard-rubocop',    '~> 0.2'
   gem 'guard-foodcritic', '~> 1.0'

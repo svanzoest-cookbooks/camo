@@ -1,3 +1,5 @@
+# camo [![Build Status](https://travis-ci.org/onehealth-cookbooks/camo.png?branch=master)](https://travis-ci.org/onehealth-cookbooks/camo)
+
 Description
 ===========
 

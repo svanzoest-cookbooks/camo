@@ -1,0 +1,22 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+  data_bags_path: "data_bags"
+  roles_path: "roles"
+  environments_path: "environments"
+  require_chef_omnibus: true
+
+platforms:
+- name: canonical-ubuntu-12.04
+  driver:
+    box: canonical-ubuntu-12.04
+    box_url: https://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box
+
+suites:
+- name: default
+  run_list:
+    - recipe[camo]
+  attributes:

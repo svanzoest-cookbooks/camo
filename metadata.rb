@@ -1,3 +1,4 @@
+name		 'camo'
 maintainer       'OneHealth Solutions, Inc.'
 maintainer_email 'cookbooks@onehealth.com'
 license          'Apache 2.0'

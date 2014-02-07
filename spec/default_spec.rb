@@ -15,7 +15,7 @@ describe 'camo::default' do
           ChefSpec::Runner.new(platform: platform, version: version) do |node|
             node.default[:camo][:app_name] = 'camo'
             node.default[:camo][:path] = '/srv/camo'
-            node.default[:camo][:deploy_user] = 'deploy'
+            node.set[:camo][:deploy_user] = 'deploy'
             node.default[:camo][:deploy_group] = 'users'
             node.default[:camo][:deploy_migrate] = false
             node.default[:camo][:deploy_action] = 'deploy'
@@ -37,8 +37,8 @@ describe 'camo::default' do
           expect(chef_run).to include_recipe('nodejs::default')
         end
 
-        it 'installs the `nodejs` package' do
-          expect(chef_run).to install_package('nodejs')
+        it 'includes the `git::default` recipe' do
+          expect(chef_run).to include_recipe('git::default')
         end
 
         it 'creates a /srv/camo' do

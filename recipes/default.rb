@@ -70,6 +70,7 @@ if platform?('ubuntu', 'debian')
     owner 'root'
     group 'users'
     mode '0644'
+    notifies :restart, "service[#{node[:camo][:app_name]}]", :delayed
   end
 end
 
@@ -93,17 +94,7 @@ unless node.chef_environment == 'dev'
         action :run
       end
     end
-    restart_command  do
-      service node[:camo][:app_name] do
-        case node[:platform]
-        when 'ubuntu'
-          if node[:platform_version].to_f >= 9.10
-            provider Chef::Provider::Service::Upstart
-          end
-        end
-        action [:stop, :start]
-      end
-    end
+    notifies :restart, "service[#{node[:camo][:app_name]}]", :delayed
   end
 end
 

@@ -25,7 +25,7 @@ script
    DAEMON_OPTS="server.js"
    APP_DIR="<%= node['camo']['path'] %>/current"
    APP_USER="<%= node['camo']['user'] %>"
-   export NODE_ENV="<%= node['chef_environment'] %>"
+   export NODE_ENV="<%= node.chef_environment %>"
    export PORT=<%= node['camo']['port'] %>
    export CAMO_HEADER_VIA="<%= node['camo']['header_via'] %>"
    export CAMO_KEY="<%= node['camo']['key'] %>"

@@ -32,16 +32,20 @@ are setup appropriately.
 # config
 
 * node[:camo][:port] = 8081
+* node[:camo][:header_via] = nil
 * node[:camo][:key] = '0x24FEEDFACEDEADBEEFCAFE'
-* node[:camo][:max_redirects] = 4
-* node[:camo][:host_exclusions] = "*.example.org"
-* node[:camo][:hostname] = "unknown"
 * node[:camo][:logging] = "disabled"
+* node[:camo][:length_limit] = 5242880
+* node[:camo][:max_redirects] = 4
+* node[:camo][:socket_timeout] = 10
+* node[:camo][:timing_allow_origin] = nil
+* node[:camo][:hostname] = "unknown"
+
 
 Usage
 =====
 
 Usually you would run this behind a web server proxy, such as apache2, nginx, etc.
-In that cookbook add this cookbook as a dependency and include the default recipe
+In a wrapper cookbook add this cookbook as a dependency and include the default recipe
 
 include_recipe "camo::default"

@@ -27,11 +27,15 @@ script
    APP_USER="<%= @app_user %>"
    export NODE_ENV="<%= @environment %>"
    export PORT=<%= @port %>
-   export CAMO_HOST_EXCLUSIONS="<%= @host_exclusions %>"
+   export CAMO_HEADER_VIA="<%= @header_via %>"
    export CAMO_KEY="<%= @key %>"
-   export CAMO_MAX_REDIRECTS="<%= @max_redirects %>"
-   export CAMO_HOSTNAME="<%= @hostname %>"
+   export CAMO_LENGTH_LIMIT="<%= @length_limit %>"
    export CAMO_LOGGING_ENABLED="<%= @logging %>"
+   export CAMO_MAX_REDIRECTS="<%= @max_redirects %>"
+   export CAMO_SOCKET_TIMEOUT="<%= @socket_timeout %>"
+   export CAMO_TIMING_ALLOW_ORIGIN="<%= @timing_allow_origin %>"
+   export CAMO_HOSTNAME="<%= @hostname %>"
+
    exec start-stop-daemon --start -c $APP_USER --name <%= @app_name %> --exec $DAEMON -d $APP_DIR -- $DAEMON_OPTS
 end script
 

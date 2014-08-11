@@ -13,24 +13,7 @@ describe 'camo::default' do
       context "on #{platform.capitalize} #{version}" do
         let(:chef_run) do
           ChefSpec::Runner.new(platform: platform, version: version) do |node|
-            node.default[:camo][:app_name] = 'camo'
-            node.default[:camo][:path] = '/srv/camo'
             node.set[:camo][:deploy_user] = 'deploy'
-            node.default[:camo][:deploy_group] = 'users'
-            node.default[:camo][:deploy_migrate] = false
-            node.default[:camo][:deploy_action] = 'deploy'
-            node.default[:camo][:repo] = 'git://github.com/atmos/camo.git'
-            node.default[:camo][:branch] = 'master'
-            node.default[:camo][:user] = 'www-data'
-            node.default[:camo][:group] = 'users'
-
-            # config
-            node.default[:camo][:port] = 8081
-            node.default[:camo][:key] = 'FEEDFACEDEADBEEFCAFE'
-            node.default[:camo][:max_redirects] = 4
-            node.default[:camo][:host_exclusions] = ''
-            node.default[:camo][:hostname] = 'unknown'
-            node.default[:camo][:logging] = 'disabled'
           end.converge('camo::default')
         end
         it 'includes the `nodejs::default` recipe' do
@@ -86,10 +69,10 @@ describe 'camo::default' do
           )
         end
 
-#       it 'deploys a revision of camo into /srv/camo' do
-#         expect(chef_run).to deploy_revision_deploy('/srv/camo')
-#         expect(chef_run).to_not deploy_revision_deploy('/srv/not_camo')
-#       end
+        # it 'deploys a revision of camo into /srv/camo' do
+        #   expect(chef_run).to deploy_revision_deploy('/srv/camo')
+        #   expect(chef_run).to_not deploy_revision_deploy('/srv/not_camo')
+        # end
 
         it 'starts the camo service' do
           expect(chef_run).to start_service('camo')

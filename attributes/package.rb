@@ -1,0 +1,3 @@
+#
+# cookbook name: camo
+#

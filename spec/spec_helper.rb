@@ -3,7 +3,7 @@ require 'chefspec/berkshelf'
 
 RSpec.configure do |config|
   config.formatter = :documentation
-  config.color_enabled = true
+  config.color = true
   # Specify the Chef log_level (default: :warn)
   # config.log_level = :info
 

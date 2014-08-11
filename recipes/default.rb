@@ -60,11 +60,14 @@ if platform?('ubuntu', 'debian')
       :app_user => node[:camo][:user],
       :app_name => node[:camo][:app_name],
       :port => node[:camo][:port],
-      :host_exclusions => node[:camo][:host_exclusions],
       :key => node[:camo][:key],
       :max_redirects => node[:camo][:max_redirects],
       :hostname => node[:camo][:hostname],
-      :logging => node[:camo][:logging]
+      :logging => node[:camo][:logging],
+      :header_via => node[:camo][:header_via],
+      :length_limit => node[:camo][:length_limit],
+      :socket_timeout => node[:camo][:socket_timeout],
+      :timing_allow_origin => node[:camo][:timing_allow_origin]
     )
     source 'upstart.conf.erb'
     owner 'root'
@@ -74,29 +77,7 @@ if platform?('ubuntu', 'debian')
   end
 end
 
-unless node.chef_environment == 'dev'
-  deploy_revision node[:camo][:path] do
-    repo node[:camo][:repo]
-    branch node[:camo][:branch]
-    user node[:camo][:deploy_user]
-    group node[:camo][:deploy_group]
-    action node[:camo][:action]
-    create_dirs_before_symlink []
-    symlink_before_migrate.clear
-    purge_before_symlink %w(tmp log)
-    symlinks 'tmp' => 'tmp', 'log' => 'log'
-    before_restart do
-      # this is needed because deploy does a chown -R user.group on @name argument, including the shared directory
-      # we need to fix this, as the tmp can only be written to by the www-data user
-      # https://github.com/opscode/chef/blob/master/chef/lib/chef/provider/deploy.rb#L233
-      execute 'chown-tmp' do
-        command "/bin/chown -R #{node[:camo][:user]} #{node[:camo][:path]}/shared/tmp"
-        action :run
-      end
-    end
-    notifies :restart, "service[#{node[:camo][:app_name]}]", :delayed
-  end
-end
+include_recipe "camo::#{node[:camo][:install_method]}"
 
 service node[:camo][:app_name] do
   case node[:platform]

@@ -7,7 +7,7 @@ default[:camo][:app_name] = 'camo'
 default[:camo][:path] = '/srv/camo'
 default[:camo][:user] = 'www-data'
 default[:camo][:group] = 'users'
-default[:camo][:install_method] = 'package'
+default[:camo][:install_method] = 'deploy_revision'
 
 # config
 default[:camo][:port] = 8_081

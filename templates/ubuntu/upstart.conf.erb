@@ -1,7 +1,7 @@
- 
+
 # http://upstart.ubuntu.com/cookbook/
 #
-description "<%= @app_name %>"
+description "<%= node['camo']['app_name'] %>"
 
 start on (local-filesystems and net-device-up IFACE=eth0)
 stop on shutdown
@@ -11,11 +11,11 @@ respawn
 respawn limit 99 5
 
 script
-   # exec > /tmp/upstart-<%= @app_name %>.log 2>&1
+   # exec > /tmp/upstart-<%= node['camo']['app_name'] %>.log 2>&1
    set -e
-   TMPFIFO=/tmp/<%= @app_name %>-fifo$$.log
+   TMPFIFO=/tmp/<%= node['camo']['app_name'] %>-fifo$$.log
    mkfifo ${TMPFIFO}
-   ( logger -t <%= @app_name %> < ${TMPFIFO} & )
+   ( logger -t <%= node['camo']['app_name'] %> < ${TMPFIFO} & )
    exec > ${TMPFIFO} 2>&1
    rm -f ${TMPFIFO}
    set -x
@@ -23,23 +23,23 @@ script
    # can't use setuid until upstart 1.4
    DAEMON="/usr/bin/node"
    DAEMON_OPTS="server.js"
-   APP_DIR="<%= @app_path %>/current"
-   APP_USER="<%= @app_user %>"
-   export NODE_ENV="<%= @environment %>"
-   export PORT=<%= @port %>
-   export CAMO_HEADER_VIA="<%= @header_via %>"
-   export CAMO_KEY="<%= @key %>"
-   export CAMO_LENGTH_LIMIT="<%= @length_limit %>"
-   export CAMO_LOGGING_ENABLED="<%= @logging %>"
-   export CAMO_MAX_REDIRECTS="<%= @max_redirects %>"
-   export CAMO_SOCKET_TIMEOUT="<%= @socket_timeout %>"
-   export CAMO_TIMING_ALLOW_ORIGIN="<%= @timing_allow_origin %>"
-   export CAMO_HOSTNAME="<%= @hostname %>"
+   APP_DIR="<%= node['camo']['path'] %>/current"
+   APP_USER="<%= node['camo']['user'] %>"
+   export NODE_ENV="<%= node.chef_environment %>"
+   export PORT=<%= node['camo']['port'] %>
+   export CAMO_HEADER_VIA="<%= node['camo']['header_via'] %>"
+   export CAMO_KEY="<%= node['camo']['key'] %>"
+   export CAMO_LENGTH_LIMIT="<%= node['camo']['length_limit'] %>"
+   export CAMO_LOGGING_ENABLED="<%= node['camo']['logging'] %>"
+   export CAMO_MAX_REDIRECTS="<%= node['camo']['max_redirects'] %>"
+   export CAMO_SOCKET_TIMEOUT="<%= node['camo']['socket_timeout'] %>"
+   export CAMO_TIMING_ALLOW_ORIGIN="<%= node['camo']['timing_allow_origin'] %>"
+   export CAMO_HOSTNAME="<%= node['camo']['hostname'] %>"
 
-   exec start-stop-daemon --start -c $APP_USER --name <%= @app_name %> --exec $DAEMON -d $APP_DIR -- $DAEMON_OPTS
+   exec start-stop-daemon --start -c $APP_USER --name <%= node['camo']['app_name'] %> --exec $DAEMON -d $APP_DIR -- $DAEMON_OPTS
 end script
 
 post-start script
   # Optionally put a script here that will notifiy you node has (re)started
-  /usr/bin/logger -t <%= @app_name %> "restarted"
+  /usr/bin/logger -t <%= node['camo']['app_name'] %> "restarted"
 end script

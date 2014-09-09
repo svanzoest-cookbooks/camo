@@ -19,30 +19,30 @@
 include_recipe 'nodejs'
 include_recipe 'git'
 
-directory node[:camo][:path] do
-  owner node[:camo][:deploy_user]
-  group node[:camo][:deploy_group]
+directory node['camo']['path'] do
+  owner node['camo']['deploy_user']
+  group node['camo']['deploy_group']
   mode '0775'
   action :create
 end
 
-directory "#{node[:camo][:path]}/shared" do
-  owner node[:camo][:deploy_user]
-  group node[:camo][:deploy_group]
+directory "#{node['camo']['path']}/shared" do
+  owner node['camo']['deploy_user']
+  group node['camo']['deploy_group']
   mode '0775'
   action :create
 end
 
-directory "#{node[:camo][:path]}/shared/log" do
-  owner node[:camo][:user]
-  group node[:camo][:group]
+directory "#{node['camo']['path']}/shared/log" do
+  owner node['camo']['user']
+  group node['camo']['group']
   mode '0775'
   action :create
 end
 
-directory "#{node[:camo][:path]}/shared/tmp" do
-  owner node[:camo][:user]
-  group node[:camo][:group]
+directory "#{node['camo']['path']}/shared/tmp" do
+  owner node['camo']['user']
+  group node['camo']['group']
   mode '0775'
   action :create
 end
@@ -53,36 +53,21 @@ if platform?('ubuntu', 'debian')
   end
 
   # create the upstart script
-  template "/etc/init/#{node[:camo][:app_name]}.conf" do
-    variables(
-      :environment => node[:chef_environment],
-      :app_path => node[:camo][:path],
-      :app_user => node[:camo][:user],
-      :app_name => node[:camo][:app_name],
-      :port => node[:camo][:port],
-      :key => node[:camo][:key],
-      :max_redirects => node[:camo][:max_redirects],
-      :hostname => node[:camo][:hostname],
-      :logging => node[:camo][:logging],
-      :header_via => node[:camo][:header_via],
-      :length_limit => node[:camo][:length_limit],
-      :socket_timeout => node[:camo][:socket_timeout],
-      :timing_allow_origin => node[:camo][:timing_allow_origin]
-    )
+  template "/etc/init/#{node['camo']['app_name']}.conf" do
     source 'upstart.conf.erb'
     owner 'root'
     group 'users'
     mode '0644'
-    notifies :restart, "service[#{node[:camo][:app_name]}]", :delayed
+    notifies :restart, "service[#{node['camo']['app_name']}]", :delayed
   end
 end
 
-include_recipe "camo::#{node[:camo][:install_method]}"
+include_recipe "camo::#{node['camo']['install_method']}"
 
-service node[:camo][:app_name] do
-  case node[:platform]
+service node['camo']['app_name'] do
+  case node['platform']
   when 'ubuntu'
-    if node[:platform_version].to_f >= 9.10
+    if node['platform_version'].to_f >= 9.10
       provider Chef::Provider::Service::Upstart
     end
   end

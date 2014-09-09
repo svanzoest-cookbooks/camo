@@ -17,12 +17,12 @@
 # limitations under the License.
 #
 
-deploy_revision node[:camo][:path] do
-  repo node[:camo][:repo]
-  branch node[:camo][:branch]
-  user node[:camo][:deploy_user]
-  group node[:camo][:deploy_group]
-  action node[:camo][:action]
+deploy_revision node['camo']['path'] do
+  repo node['camo']['repo']
+  branch node['camo']['branch']
+  user node['camo']['deploy_user']
+  group node['camo']['deploy_group']
+  action node['camo']['action']
   create_dirs_before_symlink []
   symlink_before_migrate.clear
   purge_before_symlink %w(tmp log)
@@ -32,9 +32,9 @@ deploy_revision node[:camo][:path] do
     # we need to fix this, as the tmp can only be written to by the www-data user
     # https://github.com/opscode/chef/blob/master/chef/lib/chef/provider/deploy.rb#L233
     execute 'chown-tmp' do
-      command "/bin/chown -R #{node[:camo][:user]} #{node[:camo][:path]}/shared/tmp"
+      command "/bin/chown -R #{node['camo']['user']} #{node['camo']['path']}/shared/tmp"
       action :run
     end
   end
-  notifies :restart, "service[#{node[:camo][:app_name]}]", :delayed
+  notifies :restart, "service[#{node['camo']['app_name']}]", :delayed
 end

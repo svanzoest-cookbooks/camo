@@ -2,7 +2,7 @@ camo Cookbook Changelog
 ==========================
 This file is used to list changes made in each version of the camo cookbook.
 
-v0.2.0 (unreleased)
+v0.2.0 (2014-10-29)
 -------------------
 
 - Added `camo.install_method` which can be `package` or `deploy_revision`

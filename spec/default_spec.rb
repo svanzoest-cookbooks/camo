@@ -12,7 +12,7 @@ describe 'camo::default' do
     versions.each do |version|
       context "on #{platform.capitalize} #{version}" do
         let(:chef_run) do
-          ChefSpec::Runner.new(platform: platform, version: version) do |node|
+          ChefSpec::SoloRunner.new(platform: platform, version: version) do |node|
             node.set[:camo][:deploy_user] = 'deploy'
           end.converge('camo::default')
         end

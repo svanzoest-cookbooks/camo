@@ -1,0 +1,7 @@
+[Unit]
+Requires=network.target
+
+[Service]
+User=<%= @options[:user] %>
+Group=<%= @options[:group] %>
+ExecStart=/usr/bin/node <%= @options[:path] %>/current/server.js

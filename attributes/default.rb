@@ -6,9 +6,22 @@
 # deployment
 default['camo']['app_name'] = 'camo'
 default['camo']['path'] = '/srv/camo'
-default['camo']['user'] = 'www-data'
+
+if ['ubuntu', 'debian'].include?(node['platform'])
+  default['camo']['user'] = 'www-data'
+else
+  default['camo']['user'] = 'camo'
+end
+
 default['camo']['group'] = 'users'
 default['camo']['install_method'] = 'deploy_revision'
+
+case node['platform']
+when 'ubuntu', 'debian'
+  default['camo']['init_style'] = "upstart"
+when 'centos', 'rhel'
+  default['camo']['init_style'] = "runit"
+end
 
 # config
 default['camo']['port'] = 8_081

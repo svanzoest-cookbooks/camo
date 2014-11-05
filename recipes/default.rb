@@ -19,6 +19,10 @@
 include_recipe 'nodejs'
 include_recipe 'git'
 
+unless ['ubunut', 'debian'].include?(node['platform'])
+  user node['camo']['user']
+end
+
 directory node['camo']['path'] do
   owner node['camo']['deploy_user']
   group node['camo']['deploy_group']
@@ -47,29 +51,5 @@ directory "#{node['camo']['path']}/shared/tmp" do
   action :create
 end
 
-if platform?('ubuntu', 'debian')
-  package 'upstart' do
-    action :install
-  end
-
-  # create the upstart script
-  template "/etc/init/#{node['camo']['app_name']}.conf" do
-    source 'upstart.conf.erb'
-    owner 'root'
-    group 'users'
-    mode '0644'
-    notifies :restart, "service[#{node['camo']['app_name']}]", :delayed
-  end
-end
-
 include_recipe "camo::#{node['camo']['install_method']}"
-
-service node['camo']['app_name'] do
-  case node['platform']
-  when 'ubuntu'
-    if node['platform_version'].to_f >= 9.10
-      provider Chef::Provider::Service::Upstart
-    end
-  end
-  action [:enable, :start]
-end
+include_recipe "camo::init"

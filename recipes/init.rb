@@ -49,7 +49,7 @@ when 'runit'
 
   ops = node['camo']
 
-  runit_service "camo" do
+  runit_service node['camo']['app_name'] do
     env({
       "PORT"                      => ops['port'].to_s,
       "CAMO_HEADER_VIA"           => ops['header_via'].to_s,

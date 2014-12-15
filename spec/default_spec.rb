@@ -4,7 +4,8 @@ require 'spec_helper'
 
 describe 'camo::default' do
   platforms = {
-    'ubuntu' => ['10.04', '12.04']
+    'ubuntu' => ['10.04', '12.04'],
+    'centos' => ['6.5']
   }
 
   # Test all generic stuff on all platforms

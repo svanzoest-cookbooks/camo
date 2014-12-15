@@ -19,7 +19,7 @@
 include_recipe 'nodejs'
 include_recipe 'git'
 
-unless ['ubunut', 'debian'].include?(node['platform'])
+unless ['ubuntu', 'debian'].include?(node['platform'])
   user node['camo']['user']
 end
 

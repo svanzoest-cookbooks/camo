@@ -62,7 +62,8 @@ when 'runit'
     })
     options({
       :user => ops['user'],
-      :path => ops['path']
+      :path => ops['path'],
+      :env => node['runit']['sv_dir'] + node['camo']['app_name']
     })
     default_logger true
     action [:enable, :start]

@@ -45,29 +45,29 @@ when 'upstart'
 
 when 'runit'
 
-  include_recipe "runit"
+  include_recipe 'runit'
 
   ops = node['camo']
 
   runit_service node['camo']['app_name'] do
-    env({
-      "PORT"                      => ops['port'].to_s,
-      "CAMO_HEADER_VIA"           => ops['header_via'].to_s,
-      "CAMO_KEY"                  => ops['key'],
-      "CAMO_LENGTH_LIMIT"         => ops['length_limit'].to_s,
-      "CAMO_LOGGING_ENABLED"      => ops['logging'],
-      "CAMO_MAX_REDIRECTS"        => ops['max_redirects'].to_s,
-      "CAMO_SOCKET_TIMEOUT"       => ops['socket_timeout'].to_s,
-      "CAMO_TIMING_ALLOW_ORIGIN"  => ops['timing_allow_origin'].to_s
-    })
-    options({
+    env(
+      'PORT'                      => ops['port'].to_s,
+      'CAMO_HEADER_VIA'           => ops['header_via'].to_s,
+      'CAMO_KEY'                  => ops['key'],
+      'CAMO_LENGTH_LIMIT'         => ops['length_limit'].to_s,
+      'CAMO_LOGGING_ENABLED'      => ops['logging'],
+      'CAMO_MAX_REDIRECTS'        => ops['max_redirects'].to_s,
+      'CAMO_SOCKET_TIMEOUT'       => ops['socket_timeout'].to_s,
+      'CAMO_TIMING_ALLOW_ORIGIN'  => ops['timing_allow_origin'].to_s
+    )
+    options(
       :user => ops['user'],
       :path => ops['path']
-    })
+    )
     default_logger true
     action [:enable, :start]
   end
 else
-  chef::Log.error "Not a supported init_style"
-  raise RunTimeError
+  chef::Log.error 'Not a supported init_style'
+  fail RunTimeError
 end

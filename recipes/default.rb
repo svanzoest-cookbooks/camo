@@ -19,7 +19,7 @@
 include_recipe 'nodejs'
 include_recipe 'git'
 
-unless ['ubuntu', 'debian'].include?(node['platform'])
+%w(centos).include?(node['platform']) do
   user node['camo']['user']
 end
 
@@ -52,4 +52,4 @@ directory "#{node['camo']['path']}/shared/tmp" do
 end
 
 include_recipe "camo::#{node['camo']['install_method']}"
-include_recipe "camo::init"
+include_recipe 'camo::init'

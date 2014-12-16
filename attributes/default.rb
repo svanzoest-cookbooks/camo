@@ -7,7 +7,7 @@
 default['camo']['app_name'] = 'camo'
 default['camo']['path'] = '/srv/camo'
 
-if ['ubuntu', 'debian'].include?(node['platform'])
+if %w(ubuntu debian).include?(node['platform'])
   default['camo']['user'] = 'www-data'
 else
   default['camo']['user'] = 'camo'
@@ -18,9 +18,9 @@ default['camo']['install_method'] = 'deploy_revision'
 
 case node['platform']
 when 'ubuntu', 'debian'
-  default['camo']['init_style'] = "upstart"
+  default['camo']['init_style'] = 'upstart'
 when 'centos', 'rhel'
-  default['camo']['init_style'] = "runit"
+  default['camo']['init_style'] = 'runit'
 end
 
 # config

@@ -4,18 +4,17 @@ require 'spec_helper'
 
 describe 'camo::default' do
   platforms = {
-    'ubuntu' => ['10.04', '12.04'],
-    'centos' => ['6.5']
+    'ubuntu' => ['10.04', '12.04']
   }
 
   # Test all generic stuff on all platforms
   platforms.each do |platform, versions|
     versions.each do |version|
-      context "on #{platform.capitalize} #{version}" do
+      describe 'camo::default' do
         let(:chef_run) do
-          ChefSpec::Runner.new(platform: platform, version: version) do |node|
+          ChefSpec::SoloRunner.new(platform: platform, version: version) do |node|
             node.set[:camo][:deploy_user] = 'deploy'
-          end.converge('camo::default')
+          end.converge(described_recipe)
         end
         it 'includes the `nodejs::default` recipe' do
           expect(chef_run).to include_recipe('nodejs::default')

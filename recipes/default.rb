@@ -19,7 +19,7 @@
 include_recipe 'nodejs'
 include_recipe 'git'
 
-if %w(centos rhel).include?(node['platform_family'])
+if platform_family?('rhel') 
   user node['camo']['user']
 end
 

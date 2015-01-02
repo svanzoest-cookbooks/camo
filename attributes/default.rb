@@ -7,7 +7,7 @@
 default['camo']['app_name'] = 'camo'
 default['camo']['path'] = '/srv/camo'
 
-if %w(ubuntu debian).include?(node['platform_family'])
+if platform_family?('debian', 'ubuntu')
   default['camo']['user'] = 'www-data'
 else
   default['camo']['user'] = 'camo'

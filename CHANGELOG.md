@@ -2,6 +2,12 @@ camo Cookbook Changelog
 ==========================
 This file is used to list changes made in each version of the camo cookbook.
 
+v0.2.2 (unreleased)
+-------------------
+
+- Update to v2.2.0 and add CAMO_KEEP_ALIVE support
+
+
 v0.2.0 (2014-10-29)
 -------------------
 

@@ -20,3 +20,4 @@ default['camo']['max_redirects'] = 4
 default['camo']['socket_timeout'] = 10
 default['camo']['timing_allow_origin'] = nil
 default['camo']['hostname'] = 'unknown'
+default['camo']['keep_alive'] = false

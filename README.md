@@ -43,7 +43,7 @@ are setup appropriately.
 * node[:camo][:socket_timeout] = 10
 * node[:camo][:timing_allow_origin] = nil
 * node[:camo][:hostname] = "unknown"
-
++ node[:camo][:keep_alive] = false
 
 Usage
 =====

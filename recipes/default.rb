@@ -19,7 +19,7 @@
 include_recipe 'nodejs'
 include_recipe 'git'
 
-if platform_family?('rhel') 
+if platform_family?('rhel')
   user node['camo']['user']
 end
 

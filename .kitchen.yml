@@ -20,10 +20,7 @@ platforms:
   driver:
     box: canonical-ubuntu-12.04
     box_url: https://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box
-- name: centos-6.5
-  attributes:
-    camo:
-      logging: debug
+- name: centos-6.6
 
 suites:
 - name: default

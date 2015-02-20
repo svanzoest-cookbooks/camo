@@ -35,6 +35,7 @@ script
    export CAMO_SOCKET_TIMEOUT="<%= node['camo']['socket_timeout'] %>"
    export CAMO_TIMING_ALLOW_ORIGIN="<%= node['camo']['timing_allow_origin'] %>"
    export CAMO_HOSTNAME="<%= node['camo']['hostname'] %>"
+   export CAMO_KEEP_ALIVE=<%= node['camo']['keep_alive'] %>
 
    exec start-stop-daemon --start -c $APP_USER --name <%= node['camo']['app_name'] %> --exec $DAEMON -d $APP_DIR -- $DAEMON_OPTS
 end script

@@ -8,4 +8,4 @@ default['camo']['deploy_group'] = 'users'
 default['camo']['deploy_migrate'] = false
 default['camo']['deploy_action'] = 'deploy'
 default['camo']['repo'] = 'git://github.com/atmos/camo.git'
-default['camo']['branch'] = 'v2.1.0'
+default['camo']['branch'] = 'v2.2.0'

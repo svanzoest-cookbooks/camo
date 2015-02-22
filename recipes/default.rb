@@ -19,9 +19,7 @@
 include_recipe 'nodejs'
 include_recipe 'git'
 
-if platform_family?('rhel')
-  user node['camo']['user']
-end
+user node['camo']['user']
 
 directory node['camo']['path'] do
   owner node['camo']['deploy_user']
@@ -52,4 +50,4 @@ directory "#{node['camo']['path']}/shared/tmp" do
 end
 
 include_recipe "camo::#{node['camo']['install_method']}"
-include_recipe 'camo::init'
+include_recipe "camo::_#{node['camo']['init_style']}"

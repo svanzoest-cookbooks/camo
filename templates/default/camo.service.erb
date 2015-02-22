@@ -1,0 +1,12 @@
+[Unit]
+Description=Camo
+
+[Service]
+type=forking
+User=<%= node['camo']['user'] %>
+EnvironmentFile=<%= node['camo']['systemd']['env_path'] %>
+PIDFile=/var/run/<%= node['camo']['app_name'] %>.pid
+ExecStart=/usr/bin/node <%= node['camo']['path'] %>/current/server.js
+
+[Install]
+WantedBy=multi-user.target

@@ -6,5 +6,7 @@ description 'Configures camo - a small http proxy to simplify routing images thr
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '0.2.0'
 supports 'ubuntu', '>= 12.04'
+supports 'centos', '>= 6.6'
 depends	'nodejs'
 depends 'git'
+depends 'runit'

@@ -12,7 +12,7 @@ default['camo']['install_method'] = 'deploy_revision'
 default['camo']['systemd']['env_path'] = '/etc/sysconfig'
 default['camo']['init_style'] = value_for_platform(
   'ubuntu' => {
-    'default' => 'upstart'
+    'default' => 'upstart',
     '>= 14.10' => 'systemd'
   },
   'debian' => {

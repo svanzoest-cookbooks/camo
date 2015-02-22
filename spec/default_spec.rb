@@ -4,7 +4,8 @@ require 'spec_helper'
 
 describe 'camo::default' do
   platforms = {
-    'ubuntu' => ['10.04', '12.04']
+    'ubuntu' => ['10.04', '12.04'],
+    'centos' => ['6.6', '7.0']
   }
 
   # Test all generic stuff on all platforms
@@ -42,7 +43,7 @@ describe 'camo::default' do
 
         it 'creates a /srv/camo/shared/log' do
           expect(chef_run).to create_directory('/srv/camo/shared/log').with(
-            user: 'www-data',
+            user: 'camo',
             group: 'users',
             mode: '0775'
           )
@@ -50,7 +51,7 @@ describe 'camo::default' do
 
         it 'creates a /srv/camo/shared/tmp' do
           expect(chef_run).to create_directory('/srv/camo/shared/tmp').with(
-            user: 'www-data',
+            user: 'camo',
             group: 'users',
             mode: '0775'
           )

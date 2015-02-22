@@ -49,5 +49,5 @@ directory "#{node['camo']['path']}/shared/tmp" do
   action :create
 end
 
-include_recipe "camo::#{node['camo']['install_method']}"
+include_recipe "camo::_#{node['camo']['install_method']}"
 include_recipe "camo::_#{node['camo']['init_style']}"

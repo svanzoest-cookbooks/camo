@@ -6,28 +6,30 @@ camo cookbook
 Description
 ===========
 
-Installs camo - a small http proxy to simplify routing images through an SSL host
-For more information on camo see https://github.com/atmos/camo/
+Installs [Camo](https://github.com/atmos/camo/) - a small http proxy to simplify routing images through an SSL host
 
 Requirements
 ============
 
-The dependencies are assumed to be downloaded from the Chef Supermarket cookbook repository.
+The dependencies are assumed to be downloaded from the [Chef Supermarket](https://supermarket.chef.io/) cookbook repository.
 
-* nodejs cookbook
-* git cookbook
-* runit cookbook
+* [nodejs](https://supermarket.chef.io/cookbooks/nodejs/) cookbook
+* [git](https://supermarket.chef.io/cookbooks/git/) cookbook
+* [runit(https://supermarket.chef.io/cookbooks/runit/) cookbook
 
 Usage
 =====
 
 Usually you would run this behind a web server proxy, such as `apache2`, `nginx`, `varnish` etc.
 
-In a wrapper cookbook add this cookbook as a dependency and include the default recipe
+In a [wrapper cookbook](https://www.chef.io/blog/2013/12/03/doing-wrapper-cookbooks-right/) add this cookbook as a dependency and include the default recipe
 
 ```ruby
 include_recipe 'camo::default'
 ```
+
+Then add any attributes below that you will want to change to the defaults you use internally. Specifically you should override `camo.key` at a minimum.
+Depending on your use case, you may want to add a recipe in your wrapper cookbook that deals with the web server proxy setup.
 
 Attributes
 ==========
@@ -42,7 +44,7 @@ Attributes
 ## Configuration
 
 These are configuration parameters that will be passed directly to camo via the init scripts.
-Please see camo documentation for more details on these attributes.
+Please see the [camo documentation](https://github.com/atmos/camo#configuration) for more details on these attributes.
 
 * `node['camo']['port'] = 8081`
 * `node['camo']['header_via'] = nil`

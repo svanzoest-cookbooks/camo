@@ -15,7 +15,7 @@ The dependencies are assumed to be downloaded from the [Chef Supermarket](https:
 
 * [nodejs](https://supermarket.chef.io/cookbooks/nodejs/) cookbook
 * [git](https://supermarket.chef.io/cookbooks/git/) cookbook
-* [runit(https://supermarket.chef.io/cookbooks/runit/) cookbook
+* [runit](https://supermarket.chef.io/cookbooks/runit/) cookbook
 
 Usage
 =====

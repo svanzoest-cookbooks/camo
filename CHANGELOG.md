@@ -5,8 +5,10 @@ This file is used to list changes made in each version of the camo cookbook.
 v0.2.2 (unreleased)
 -------------------
 
-- Update to v2.2.0 and add CAMO_KEEP_ALIVE support
-
+- [GH-6] Added CentOS Support
+- [GH-6] Changed `camo.user` default to `camo` and create the user if it does not exist.
+- [GH-6] Added `camo.init_style` to allow for `runit` and `systemd` in addition to previous `upstart`
+- Update to camo v2.2.0 and add `camo.keep_alive` attribute support
 
 v0.2.0 (2014-10-29)
 -------------------

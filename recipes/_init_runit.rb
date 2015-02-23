@@ -2,7 +2,7 @@
 # Cookbook Name:: camo
 # Recipe:: _runit
 #
-# Copyright 2012-2014, OneHealth Solutions, Inc.
+# Copyright 2015, Alexander van Zoest
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

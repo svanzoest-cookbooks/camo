@@ -16,6 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+include_recipe 'camo::default'
+include_recipe 'git'
 
 deploy_revision node['camo']['path'] do
   repo node['camo']['repo']

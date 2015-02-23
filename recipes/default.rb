@@ -3,6 +3,7 @@
 # Recipe:: default
 #
 # Copyright 2012-2014, OneHealth Solutions, Inc.
+# Copyright 2015, Alexander van Zoest
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +17,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 include_recipe 'nodejs'
-include_recipe 'git'
 
 user node['camo']['user']
 
@@ -49,5 +50,5 @@ directory "#{node['camo']['path']}/shared/tmp" do
   action :create
 end
 
-include_recipe "camo::_#{node['camo']['install_method']}"
-include_recipe "camo::_#{node['camo']['init_style']}"
+include_recipe "camo::_install_#{node['camo']['install_method']}"
+include_recipe "camo::_init_#{node['camo']['init_style']}"

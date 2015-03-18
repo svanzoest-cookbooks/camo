@@ -4,6 +4,8 @@ maintainer_email 'sander+cookbooks@vanzoest.com'
 license 'Apache 2.0'
 description 'Configures camo - a small http proxy to simplify routing images through an SSL host'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+issues_url 'https://github.com/svanzoest-cookbooks/camo/issues'
+source_url 'https://github.com/svanzoest-cookbooks/camo/'
 version '0.2.0'
 supports 'debian', '>= 7'
 supports 'ubuntu', '>= 12.04'

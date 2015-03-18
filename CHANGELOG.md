@@ -2,6 +2,11 @@ camo Cookbook Changelog
 ==========================
 This file is used to list changes made in each version of the camo cookbook.
 
+v0.9.1 (2015-03-18)
+-------------------
+
+- Fix build dependencies causing travis ci builds to fail.
+
 v0.9.0 (2015-03-18)
 -------------------
 

@@ -7,7 +7,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 issues_url 'https://github.com/svanzoest-cookbooks/camo/issues'
 source_url 'https://github.com/svanzoest-cookbooks/camo/'
 version '0.9.0'
-supports 'debian', '>= 7'
+supports 'debian', '>= 7.0'
 supports 'ubuntu', '>= 12.04'
 supports 'centos', '>= 6.6'
 supports 'redhat', '>= 6.6'

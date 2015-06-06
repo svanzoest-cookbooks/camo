@@ -2,6 +2,12 @@ camo Cookbook Changelog
 ==========================
 This file is used to list changes made in each version of the camo cookbook.
 
+v0.9.2 (unreleased)
+-------------------
+
+- Update deploy_revision to v2.3.0 of camo
+- Update cookbook and gem dependencies
+
 v0.9.1 (2015-03-18)
 -------------------
 

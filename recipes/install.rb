@@ -55,6 +55,11 @@ when 'deploy_revision'
         command "/bin/chown -R #{node['camo']['user']} #{node['camo']['path']}/shared/tmp"
         action :run
       end
+
+      execute 'chown-log' do
+        command "/bin/chown -R #{node['camo']['user']} #{node['camo']['path']}/shared/log"
+        action :run
+      end
     end
     notifies :restart, "service[#{node['camo']['app_name']}]", :delayed
   end

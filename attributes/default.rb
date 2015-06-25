@@ -25,7 +25,7 @@ default['camo']['init_style'] = value_for_platform(
     '>= 8' => 'systemd'
   },
   %w(centos rhel) => {
-    'default' => 'runit',
+    'default' => 'upstart',
     '>= 7.0' => 'systemd'
   }
 )

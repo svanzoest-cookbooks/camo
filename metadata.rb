@@ -17,4 +17,4 @@ supports 'amazon'
 
 depends	'nodejs'
 depends 'git'
-depends 'runit', '~> 1.7'
+depends 'runit', '~> 1.5.12'

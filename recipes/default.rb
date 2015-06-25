@@ -4,6 +4,7 @@
 #
 # Copyright 2012-2014, OneHealth Solutions, Inc.
 # Copyright 2015, Alexander van Zoest
+# Copyright 2015, Nathan Williams
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,37 +19,6 @@
 # limitations under the License.
 #
 
-include_recipe 'nodejs'
-
-user node['camo']['user']
-
-directory node['camo']['path'] do
-  owner node['camo']['deploy_user']
-  group node['camo']['deploy_group']
-  mode '0775'
-  action :create
+%w( install configure service ).each do |r|
+  include_recipe "#{cookbook_name}::#{r}"
 end
-
-directory "#{node['camo']['path']}/shared" do
-  owner node['camo']['deploy_user']
-  group node['camo']['deploy_group']
-  mode '0775'
-  action :create
-end
-
-directory "#{node['camo']['path']}/shared/log" do
-  owner node['camo']['user']
-  group node['camo']['group']
-  mode '0775'
-  action :create
-end
-
-directory "#{node['camo']['path']}/shared/tmp" do
-  owner node['camo']['user']
-  group node['camo']['group']
-  mode '0775'
-  action :create
-end
-
-include_recipe "camo::_install_#{node['camo']['install_method']}"
-include_recipe "camo::_init_#{node['camo']['init_style']}"

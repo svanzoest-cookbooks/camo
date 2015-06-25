@@ -34,3 +34,13 @@ suites:
   attributes:
     camo:
       init_style: runit
+- name: package
+  excludes:
+    - ubuntu-12.04
+    - centos-6.6
+    - centos-7.1
+  run_list:
+    - recipe[camo]
+  attributes:
+    camo:
+      install_method: package

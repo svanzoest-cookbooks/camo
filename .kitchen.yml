@@ -15,7 +15,7 @@ platforms:
 - name: centos-6.6
   run_list:
   - recipe[yum]
-- name: centos-7.0
+- name: centos-7.1
   run_list:
   - recipe[yum]
 
@@ -25,6 +25,10 @@ suites:
     - recipe[camo]
   attributes:
 - name: runit
+  excludes:
+    - ubuntu-12.04
+    - ubuntu-14.04
+    - centos-7.1
   run_list:
     - recipe[camo]
   attributes:

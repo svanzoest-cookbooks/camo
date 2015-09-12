@@ -11,6 +11,7 @@ vendor
 # Bundler
 bin/*
 .bundle/*
+Gemfile.lock
 
 Berksfile.lock
 .kitchen/

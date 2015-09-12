@@ -75,5 +75,5 @@ service node['camo']['app_name'] do
   provider service_provider
   action [:enable, :start]
   subscribes :restart, "template[#{node['camo']['env_path']}/camo]", :delayed
-  not_if { node['camo']['init_style'] == 'runit' } 
+  not_if { node['camo']['init_style'] == 'runit' }
 end

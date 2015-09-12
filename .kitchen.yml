@@ -12,7 +12,7 @@ platforms:
 - name: ubuntu-14.04
   run_list:
   - recipe[apt]
-- name: centos-6.6
+- name: centos-6.7
   run_list:
   - recipe[yum]
 - name: centos-7.1
@@ -37,7 +37,7 @@ suites:
 - name: package
   excludes:
     - ubuntu-12.04
-    - centos-6.6
+    - centos-6.7
     - centos-7.1
   run_list:
     - recipe[camo]

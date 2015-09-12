@@ -2,7 +2,7 @@ require 'spec_helper'
 
 # examples at https://github.com/sethvargo/chefspec/tree/master/examples
 
-describe 'camo::_install_deploy_revision' do
+describe 'camo::install' do
   platforms = {
     'ubuntu' => ['10.04', '12.04'],
     'centos' => ['6.6', '7.0']
@@ -18,7 +18,8 @@ describe 'camo::_install_deploy_revision' do
         let(:chef_run) do
           ChefSpec::SoloRunner.new(platform: platform, version: version) do |node|
             node.set[:camo][:deploy_user] = 'deploy'
-          end.converge('camo::_install_deploy_revision')
+            node.set[:camo][:install_method] = 'deploy_revision'
+          end.converge(described_recipe)
         end
 
         it 'includes the `git::default` recipe' do

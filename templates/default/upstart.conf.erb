@@ -37,8 +37,14 @@ script
    export CAMO_HOSTNAME="<%= node['camo']['hostname'] %>"
    export CAMO_KEEP_ALIVE=<%= node['camo']['keep_alive'] %>
 
+   <% case node['platform_family'] %>
+   <% when 'debian' %>
    exec start-stop-daemon --start -c $APP_USER --name <%= node['camo']['app_name'] %> --exec $DAEMON -d $APP_DIR -- $DAEMON_OPTS
 end script
+   <% else %>
+   cd /srv/camo/current
+   exec sudo -u camo /usr/bin/node server.js
+   <% end %>
 
 post-start script
   # Optionally put a script here that will notifiy you node has (re)started

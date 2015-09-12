@@ -1,8 +1,10 @@
 #
 # Cookbook Name:: camo
-# Recipe:: _upstart
+# Recipe:: configure
 #
 # Copyright 2012-2014, OneHealth Solutions, Inc.
+# Copyright 2015, Alexander van Zoest
+# Copyright 2015, Nathan Williams
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,24 +19,9 @@
 # limitations under the License.
 #
 
-package 'upstart' do
-  action :install
-end
-
-# create the upstart script
-template "/etc/init/#{node['camo']['app_name']}.conf" do
-  source 'upstart.conf.erb'
-  owner 'root'
-  group 'users'
+template "#{node['camo']['env_path']}/camo" do
+  source 'camo.env.erb'
   mode '0644'
-  notifies :restart, "service[#{node['camo']['app_name']}]", :delayed
-end
-
-service node['camo']['app_name'] do
-  if platform?('ubuntu')
-    if node['platform_version'].to_f >= 9.10
-      provider Chef::Provider::Service::Upstart
-    end
-  end
-  action [:enable, :start]
+  owner 'root'
+  group 'root'
 end

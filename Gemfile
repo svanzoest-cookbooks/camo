@@ -3,16 +3,14 @@ source 'https://rubygems.org'
 gem 'berkshelf',  '~> 3.2', '>= 3.2.0'
 
 group :unit do
-  gem 'foodcritic',       '~> 4.0', '>= 4.0.0'
-  gem 'rubocop',          '~> 0.29', '>= 0.29.0'
-  gem 'chefspec',         '~> 4.2', '>= 4.2.0'
+  gem 'foodcritic'
+  gem 'rubocop'
+  gem 'chefspec'
 end
 
 group :integration do
-  gem 'test-kitchen', '~> 1.2'
-  gem 'kitchen-vagrant', '~> 0.11'
-  gem 'kitchen-digitalocean'
-  gem 'kitchen-ec2'
+  gem 'test-kitchen'
+  gem 'kitchen-vagrant'
 end
 
 group :development do

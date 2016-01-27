@@ -4,8 +4,8 @@ require 'spec_helper'
 
 describe 'camo::_init_runit' do
   platforms = {
-    'ubuntu' => ['10.04', '12.04'],
-    'centos' => ['6.6', '7.0']
+    'ubuntu' => ['12.04', '14.04'],
+    'centos' => ['6.7', '7.2.1511']
   }
 
   # Test all generic stuff on all platforms

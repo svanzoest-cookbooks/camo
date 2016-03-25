@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # https://github.com/chef/chef-dk/issues/278#issuecomment-89251860
 ENV['PKG_CONFIG_PATH'] = '/opt/chefdk/embedded/lib/pkgconfig'
 
-gem 'berkshelf', '~> 4.0', '>= 4.0.1'
+gem 'berkshelf', '~> 4.3', '>= 4.3.1'
 
 group :unit do
   gem 'foodcritic',       '~> 5.0', '>= 5.0.0'

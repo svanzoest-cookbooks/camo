@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'camo::_install_package' do
   platforms = {
-    'ubuntu' => ['12.04', '14.04'],
+    'ubuntu' => ['14.04', '16.04'],
     'centos' => ['6.7', '7.2.1511']
   }
 
@@ -18,6 +18,7 @@ describe 'camo::_install_package' do
         let(:chef_run) do
           ChefSpec::SoloRunner.new(platform: platform, version: version) do |node|
             node.set[:camo][:deploy_user] = 'deploy'
+            node.automatic[:virtualization][:systems] = {}
           end.converge('camo::_install_package')
         end
 

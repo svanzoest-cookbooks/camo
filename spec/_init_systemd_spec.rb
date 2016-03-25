@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'camo::_init_systemd' do
   platforms = {
-    'ubuntu' => ['12.04', '14.04'],
+    'ubuntu' => ['14.04', '16.04'],
     'centos' => ['6.7', '7.2.1511']
   }
 

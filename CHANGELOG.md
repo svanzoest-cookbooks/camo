@@ -5,6 +5,7 @@ This file is used to list changes made in each version of the camo cookbook.
 v0.9.2 (unreleased)
 -------------------
 
+- Added tests for Ubuntu 16.04 LTS (Xenial)
 - Update deploy_revision to v2.3.0 of camo
 - Update cookbook and gem dependencies
 

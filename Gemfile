@@ -7,8 +7,8 @@ ENV['PKG_CONFIG_PATH'] = '/opt/chefdk/embedded/lib/pkgconfig'
 gem 'berkshelf', '~> 4.3', '>= 4.3.2'
 
 group :unit do
-  gem 'foodcritic',       '~> 6.1', '>= 6.1.1'
-  gem 'rubocop',          '~> 0.38', '>= 0.38.0'
+  gem 'foodcritic',       '~> 6.2', '>= 6.2.0'
+  gem 'rubocop',          '~> 0.40', '>= 0.40.0'
   gem 'chefspec',         '~> 4.6', '>= 4.6.1'
 end
 
@@ -26,6 +26,8 @@ end
 
 group :development do
   gem 'guard', '~> 2.13.0'
+  # lock at ruby 2.1 for chefdk
+  gem 'listen', '~> 3.0.7', '<= 3.1.0'
   gem 'guard-rubocop', '~> 1.2.0'
   gem 'guard-foodcritic', '~> 2.1.0'
   gem 'guard-kitchen', '~> 0.0.2'

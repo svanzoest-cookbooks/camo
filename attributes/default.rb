@@ -9,7 +9,14 @@ default['camo']['path'] = '/srv/camo'
 default['camo']['user'] = 'camo'
 default['camo']['group'] = 'users'
 default['camo']['install_method'] = 'deploy_revision'
-default['camo']['systemd']['env_path'] = '/etc/sysconfig'
+default['camo']['systemd']['env_path'] =  value_for_platform(
+  %w(ubuntu debian) => {
+     'default' => '/etc/default'
+  },
+  %w(centos rhel) => {
+     'default' => '/etc/sysconfig'
+  }
+)
 default['camo']['init_style'] = value_for_platform(
   'ubuntu' => {
     'default' => 'upstart',

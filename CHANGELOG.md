@@ -1,7 +1,8 @@
 camo Cookbook Changelog
 ==========================
 This file is used to list changes made in each version of the camo cookbook.
-v0.9.2 (2016-10-30)
+
+v0.9.3 (2016-10-30)
 -------------------
 - update rspec tests to match v0.9.2 changes
 

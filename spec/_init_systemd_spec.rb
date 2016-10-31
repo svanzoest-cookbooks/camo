@@ -17,7 +17,7 @@ describe 'camo::_init_systemd' do
           end.converge('camo::_init_systemd')
         end
 
-	if platform == 'ubuntu'
+        if platform == 'ubuntu'
           it 'creates a template /etc/default/camo' do
             expect(chef_run).to create_template('/etc/default/camo').with(
               source: 'camo.env.erb',
@@ -46,7 +46,6 @@ describe 'camo::_init_systemd' do
             expect(sysconfig).to_not notify('service[camo]').to(:restart).immediately
           end
         end
-
 
         it 'creates a template /etc/systemd/system/camo.service' do
           expect(chef_run).to create_template('/etc/systemd/system/camo.service').with(

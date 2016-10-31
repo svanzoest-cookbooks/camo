@@ -17,23 +17,39 @@ describe 'camo::_init_systemd' do
           end.converge('camo::_init_systemd')
         end
 
-        it 'creates a template /etc/sysconfig/camo' do
-          expect(chef_run).to create_template('/etc/sysconfig/camo').with(
-            source: 'camo.env.erb',
-            owner:  'root',
-            group:  'root',
-            mode:   '0644'
-          )
+	if platform == 'ubuntu'
+          it 'creates a template /etc/default/camo' do
+            expect(chef_run).to create_template('/etc/default/camo').with(
+              source: 'camo.env.erb',
+              owner:  'root',
+              group:  'root',
+              mode:   '0644'
+            )
+          end
+          subject(:sysconfig) { chef_run.template('/etc/default/camo') }
+          it 'notification is triggered by /etc/default/camo template to restart service[camo]' do
+            expect(sysconfig).to notify('service[camo]').to(:restart).delayed
+            expect(sysconfig).to_not notify('service[camo]').to(:restart).immediately
+          end
+        else
+          it 'creates a template /etc/sysconfig/camo' do
+            expect(chef_run).to create_template('/etc/sysconfig/camo').with(
+              source: 'camo.env.erb',
+              owner:  'root',
+              group:  'root',
+              mode:   '0644'
+            )
+          end
+          subject(:sysconfig) { chef_run.template('/etc/sysconfig/camo') }
+          it 'notification is triggered by /etc/sysconfig/camo template to restart service[camo]' do
+            expect(sysconfig).to notify('service[camo]').to(:restart).delayed
+            expect(sysconfig).to_not notify('service[camo]').to(:restart).immediately
+          end
         end
 
-        subject(:sysconfig) { chef_run.template('/etc/sysconfig/camo') }
-        it 'notification is triggered by /etc/sysconfig/camo template to restart service[camo]' do
-          expect(sysconfig).to notify('service[camo]').to(:restart).delayed
-          expect(sysconfig).to_not notify('service[camo]').to(:restart).immediately
-        end
 
-        it 'creates a template /usr/lib/systemd/system/camo.service' do
-          expect(chef_run).to create_template('/usr/lib/systemd/system/camo.service').with(
+        it 'creates a template /etc/systemd/system/camo.service' do
+          expect(chef_run).to create_template('/etc/systemd/system/camo.service').with(
             source: 'camo.service.erb',
             owner:  'root',
             group:  'root',
@@ -41,8 +57,8 @@ describe 'camo::_init_systemd' do
           )
         end
 
-        subject(:service) { chef_run.template('/usr/lib/systemd/system/camo.service') }
-        it 'notification is triggered by /usr/lib/systemd/system/camo.service template to restart service[camo]' do
+        subject(:service) { chef_run.template('/etc/systemd/system/camo.service') }
+        it 'notification is triggered by /etc/systemd/system/camo.service template to restart service[camo]' do
           expect(service).to notify('service[camo]').to(:restart).delayed
           expect(service).to_not notify('service[camo]').to(:restart).immediately
         end

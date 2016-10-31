@@ -25,7 +25,7 @@ template "#{node['camo']['systemd']['env_path']}/camo" do
   notifies :restart, 'service[camo]'
 end
 
-template '/usr/lib/systemd/system/camo.service' do
+template '/etc/systemd/system/camo.service' do
   source 'camo.service.erb'
   mode '0644'
   owner 'root'

@@ -3,7 +3,6 @@ camo cookbook
 [![Cookbook Version](https://img.shields.io/cookbook/v/camo.svg?style=flat)](https://supermarket.chef.io/cookbooks/camo)
 [![Dependency Status](http://img.shields.io/gemnasium/svanzoest-cookbooks/camo.svg?style=flat)](https://gemnasium.com/svanzoest-cookbooks/camo)
 [![Build Status](https://travis-ci.org/svanzoest-cookbooks/camo.png?branch=master)](https://travis-ci.org/svanzoest-cookbooks/camo)
-[![Join the chat at https://gitter.im/svanzoest-cookbooks/camo](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/svanzoest-cookbooks/camo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Description
 ===========

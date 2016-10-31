@@ -2,9 +2,11 @@ camo Cookbook Changelog
 ==========================
 This file is used to list changes made in each version of the camo cookbook.
 
-v0.9.2 (unreleased)
+v0.9.2 (2016-10-30)
 -------------------
 
+- Use /etc/default for env path on debian/ubuntu systems
+- Write systemd service to /etc/systemd/system not /usr/lib/systemd/system
 - Added tests for Ubuntu 16.04 LTS (Xenial)
 - Update deploy_revision to v2.3.0 of camo
 - Update cookbook and gem dependencies

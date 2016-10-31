@@ -17,7 +17,6 @@ describe 'camo::default' do
         end
         let(:chef_run) do
           ChefSpec::SoloRunner.new(platform: platform, version: version) do |node|
-            node.set[:camo][:deploy_user] = 'deploy'
             node.automatic[:virtualization][:systems] = {}
           end.converge('camo::default')
         end
@@ -32,7 +31,7 @@ describe 'camo::default' do
 
         it 'creates a /srv/camo' do
           expect(chef_run).to create_directory('/srv/camo').with(
-            user: 'deploy',
+            user: 'root',
             group: 'users',
             mode: '0775'
           )
@@ -40,7 +39,7 @@ describe 'camo::default' do
 
         it 'creates a /srv/camo/shared' do
           expect(chef_run).to create_directory('/srv/camo/shared').with(
-            user: 'deploy',
+            user: 'root',
             group: 'users',
             mode: '0775'
           )

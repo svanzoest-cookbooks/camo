@@ -14,7 +14,6 @@ describe 'camo::_init_upstart' do
       context "on #{platform.capitalize} #{version}" do
         let(:chef_run) do
           ChefSpec::SoloRunner.new(platform: platform, version: version) do |node|
-            node.set[:camo][:deploy_user] = 'deploy'
           end.converge('camo::_init_upstart')
         end
 

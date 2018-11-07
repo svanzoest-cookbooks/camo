@@ -19,7 +19,7 @@
 
 template "#{node['camo']['systemd']['env_path']}/camo" do
   source 'camo.env.erb'
-  mode '0644'
+  mode '0640'
   owner 'root'
   group 'root'
   notifies :restart, 'service[camo]'

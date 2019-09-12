@@ -16,5 +16,7 @@ jobs:
     - name: Build and test with Rake
       run: |
         gem install bundler
-        bundle install --jobs 4 --retry 3
-        bundle exec rake
+        bundle install --jobs 4 --retry 3 --without integration development
+        bundle exec foodcritic -f any . --tags ~FC007 --tags ~FC015 --tags ~FC023
+        bundle exec rubocop
+        bundle exec rspec --color --format progress

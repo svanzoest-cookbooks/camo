@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook Name:: camo
 # Recipe:: _runit
@@ -37,5 +39,5 @@ runit_service node['camo']['app_name'] do
     :path => ops['path']
   )
   default_logger true
-  action [:enable, :start]
+  action %i[enable start]
 end

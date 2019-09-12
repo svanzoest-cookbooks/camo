@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 # examples at https://github.com/sethvargo/chefspec/tree/master/examples

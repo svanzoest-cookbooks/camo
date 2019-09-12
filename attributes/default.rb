@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # cookbook name: camo
 #
@@ -10,10 +12,10 @@ default['camo']['user'] = 'camo'
 default['camo']['group'] = 'users'
 default['camo']['install_method'] = 'deploy_revision'
 default['camo']['systemd']['env_path'] = value_for_platform(
-  %w(ubuntu debian) => {
+  %w[ubuntu debian] => {
     'default' => '/etc/default'
   },
-  %w(centos rhel) => {
+  %w[centos rhel] => {
     'default' => '/etc/sysconfig'
   }
 )
@@ -26,7 +28,7 @@ default['camo']['init_style'] = value_for_platform(
     'default' => 'upstart',
     '>= 8' => 'systemd'
   },
-  %w(centos rhel) => {
+  %w[centos rhel] => {
     'default' => 'runit',
     '>= 7.0' => 'systemd'
   }

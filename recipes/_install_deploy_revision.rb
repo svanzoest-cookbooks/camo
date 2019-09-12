@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook Name:: camo
 # Recipe:: deploy_revision
@@ -27,7 +29,7 @@ deploy_revision node['camo']['path'] do
   action node['camo']['action']
   create_dirs_before_symlink []
   symlink_before_migrate.clear
-  purge_before_symlink %w(tmp log)
+  purge_before_symlink %w[tmp log]
   symlinks 'tmp' => 'tmp', 'log' => 'log'
   before_restart do
     # this is needed because deploy does a chown -R user.group on @name argument, including the shared directory

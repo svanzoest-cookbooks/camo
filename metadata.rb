@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 name 'camo'
 maintainer 'Sander van Zoest'
 maintainer_email 'sander+cookbooks@vanzoest.com'

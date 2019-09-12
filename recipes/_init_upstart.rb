@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook Name:: camo
 # Recipe:: _upstart
@@ -32,9 +34,7 @@ end
 
 service node['camo']['app_name'] do
   if platform?('ubuntu')
-    if node['platform_version'].to_f >= 9.10
-      provider Chef::Provider::Service::Upstart
-    end
+    provider Chef::Provider::Service::Upstart if node['platform_version'].to_f >= 9.10
   end
-  action [:enable, :start]
+  action %i[enable start]
 end

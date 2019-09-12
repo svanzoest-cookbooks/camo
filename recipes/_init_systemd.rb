@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook Name:: camo
 # Recipe:: _systemd
@@ -35,5 +37,5 @@ end
 
 service 'camo' do
   provider Chef::Provider::Service::Systemd
-  action [:start, :enable]
+  action %i[start enable]
 end

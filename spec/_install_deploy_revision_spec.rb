@@ -6,8 +6,8 @@ require 'spec_helper'
 
 describe 'camo::_install_deploy_revision' do
   platforms = {
-    'ubuntu' => ['14.04', '16.04'],
-    'centos' => ['6.7', '7.2.1511']
+    'ubuntu' => ['16.04', '18.04'],
+    'centos' => ['6.10', '7.6.1810']
   }
 
   # Test all generic stuff on all platforms

@@ -24,9 +24,9 @@ describe 'camo::_init_upstart' do
         it 'creates a template /etc/init/camo.conf' do
           expect(chef_run).to create_template('/etc/init/camo.conf').with(
             source: 'upstart.conf.erb',
-            owner:  'root',
-            group:  'users',
-            mode:   '0644'
+            owner: 'root',
+            group: 'users',
+            mode: '0644'
           )
         end
 

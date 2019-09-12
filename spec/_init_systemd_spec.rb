@@ -21,9 +21,9 @@ describe 'camo::_init_systemd' do
           it 'creates a template /etc/default/camo' do
             expect(chef_run).to create_template('/etc/default/camo').with(
               source: 'camo.env.erb',
-              owner:  'root',
-              group:  'root',
-              mode:   '0644'
+              owner: 'root',
+              group: 'root',
+              mode: '0644'
             )
           end
           subject(:sysconfig) { chef_run.template('/etc/default/camo') }
@@ -35,9 +35,9 @@ describe 'camo::_init_systemd' do
           it 'creates a template /etc/sysconfig/camo' do
             expect(chef_run).to create_template('/etc/sysconfig/camo').with(
               source: 'camo.env.erb',
-              owner:  'root',
-              group:  'root',
-              mode:   '0644'
+              owner: 'root',
+              group: 'root',
+              mode: '0644'
             )
           end
           subject(:sysconfig) { chef_run.template('/etc/sysconfig/camo') }
@@ -50,9 +50,9 @@ describe 'camo::_init_systemd' do
         it 'creates a template /etc/systemd/system/camo.service' do
           expect(chef_run).to create_template('/etc/systemd/system/camo.service').with(
             source: 'camo.service.erb',
-            owner:  'root',
-            group:  'root',
-            mode:   '0644'
+            owner: 'root',
+            group: 'root',
+            mode: '0644'
           )
         end
 

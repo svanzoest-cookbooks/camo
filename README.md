@@ -1,8 +1,6 @@
 camo cookbook
 ================
 [![Cookbook Version](https://img.shields.io/cookbook/v/camo.svg?style=flat)](https://supermarket.chef.io/cookbooks/camo)
-[![Dependency Status](http://img.shields.io/gemnasium/svanzoest-cookbooks/camo.svg?style=flat)](https://gemnasium.com/svanzoest-cookbooks/camo)
-[![Build Status](https://travis-ci.org/svanzoest-cookbooks/camo.png?branch=master)](https://travis-ci.org/svanzoest-cookbooks/camo)
 
 Description
 ===========

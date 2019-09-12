@@ -4,17 +4,17 @@ source 'https://rubygems.org'
 # https://github.com/chef/chef-dk/issues/278#issuecomment-89251860
 ENV['PKG_CONFIG_PATH'] = '/opt/chefdk/embedded/lib/pkgconfig'
 
-gem 'berkshelf', '~> 5.1', '>= 5.1.0'
+gem 'berkshelf', '~> 7.0', '>= 7.0.8'
 
 group :unit do
-  gem 'foodcritic',       '~> 8.1', '>= 8.1.0'
+  gem 'foodcritic',       '~> 16.1', '>= 16.1.1'
   gem 'rubocop',          '~> 0.48'
-  gem 'chefspec',         '~> 5.2', '>= 5.2.0'
+  gem 'chefspec',         '~> 8.0', '>= 8.0.0'
 end
 
 group :integration do
-  gem 'test-kitchen', '~> 1.13.2'
-  gem 'kitchen-vagrant', '~> 0.20', :require => false
+  gem 'test-kitchen', '~> 2.3.2'
+  gem 'kitchen-vagrant', '~> 1.6', :require => false
   gem 'kitchen-digitalocean', :require => false
   gem 'kitchen-ec2', :require => false
   gem 'kitchen-docker', :require => false
@@ -29,7 +29,7 @@ group :development do
   gem 'rb-fsevent', require: false
   gem 'rb-inotify', require: false
   gem 'terminal-notifier-guard', require: false
-  gem 'psych', '~> 2.1.1'
+  gem 'psych', '~> 3.1.0'
   require 'rbconfig'
   if RbConfig::CONFIG['target_os'] =~ /mswin|mingw|cygwin/i
     gem 'wdm', '>= 0.1.1'

@@ -2,6 +2,10 @@ camo Cookbook Changelog
 ==========================
 This file is used to list changes made in each version of the camo cookbook.
 
+v0.9.4 (2018-11-06)
+-------------------
+- Ensure environment variables are not world-readable for systemd
+
 v0.9.3 (2016-10-30)
 -------------------
 - update rspec tests to match v0.9.2 changes
